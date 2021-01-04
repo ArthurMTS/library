@@ -9,53 +9,29 @@
 <body>
   <header id="header">
     <h1>My Library</h1>
-    <button>Add Book</button>
+    <button id="add-button" class="green-button">Add Book</button>
   </header>
+  <form id="form">
+    <img class="close" src="./assets/x.svg" alt="close">
+    <label for="title">
+      Title
+      <input id="title" type="text" name="title">
+    </label>
+    <label for="author">
+      Author
+      <input id="author" type="text" name="author">
+    </label>
+    <label for="pages">
+      Number of Pages
+      <input id="pages" type="number" name="pages" min="1">
+    </label>
+    <label for="read">
+      Already read
+      <input id="read" type="range" value="0" min="0" max="1" name="read">
+    </label>
+    <button id="submit-button" type="submit" class="green-button">Submit</button>
+  </form>
   <main id="main">
-    <article class="book not-read">
-      <header class="book-header">
-        <img class="toggle" src="./assets/toggle-left.svg" alt="toggle">
-        <span class="status">Not Read</span>
-        <img class="delete" src="./assets/trash-2.svg" alt="delete">
-      </header>
-      <main class="book-main">
-        <h2>The name of the wind</h2>
-        <p>Patrick Rothfuss</p>
-      </main>
-      <footer class="book-footer">
-        <p>750 Pages</p>
-      </footer>
-    </article>
-
-    <article class="book read">
-      <header class="book-header">
-        <img class="toggle" src="./assets/toggle-right.svg" alt="toggle">
-        <span class="status">Read</span>
-        <img class="delete" src="./assets/trash-2.svg" alt="delete">
-      </header>
-      <main class="book-main">
-        <h2>Title</h2>
-        <p>Author</p>
-      </main>
-      <footer class="book-footer">
-        <p>x Pages</p>
-      </footer>
-    </article>
-
-    <article class="book not-read">
-      <header class="book-header">
-        <img class="toggle" src="./assets/toggle-left.svg" alt="toggle">
-        <span class="status">Not Read</span>
-        <img class="delete" src="./assets/trash-2.svg" alt="delete">
-      </header>
-      <main class="book-main">
-        <h2>Title</h2>
-        <p>Author</p>
-      </main>
-      <footer class="book-footer">
-        <p>x Pages</p>
-      </footer>
-    </article>
   </main>
   <script src="./js/main.js"></script>
 </body>

@@ -24,7 +24,7 @@ body {
   color: #F7F7F7;
 }
 
-#header button {
+.green-button {
   cursor: pointer;
   padding: 10px 20px;
   margin: 15px 0;
@@ -37,7 +37,7 @@ body {
   transition: all .2s;
 }
 
-#header button:hover {
+.green-button:hover {
   opacity: 1;
 }
 
@@ -123,4 +123,73 @@ body {
 .book-footer p {
   font-size: 16px;
   color: #E2E2E2;
+}
+
+#form {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 10;
+  background-color: rgba(35, 35, 45, .9);
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#form .close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  cursor: pointer;
+  transition: all .2s;
+  width: 50px;
+}
+
+#form .close:hover {
+  transform: scale(1.1);
+}
+
+#form label {
+  display: flex;
+  flex-direction: column;
+  color: #FFF;
+  font-size: 25px;
+  margin: 10px 0;
+  text-indent: 20px;
+}
+
+#form input {
+  margin-top: 5px;
+  padding: 20px 10px;
+  width: 30vw;
+  font-size: 20px;
+  border-radius: 5px;
+  border: 2px solid rgba(255, 255, 255, 0);
+}
+
+#form input:focus {
+  border-color: #1EA153;
+}
+
+#form #read {
+  padding: 0;
+  width: 30px;
+  margin-left: 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 0;
+}
+
+#form label[for='read'] {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-indent: 0;
+}
+
+#form #submit-button {
+  font-size: 30px;
 }
