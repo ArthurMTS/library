@@ -7,6 +7,10 @@ function Book(title, author, pages, status) {
   this.status = status;
 }
 
+Book.prototype.toggle = function() {
+  this.status = !this.status;
+}
+
 function addBookToLibrary() {
   const title = document.querySelector('#title');
   const author = document.querySelector('#author');
@@ -23,6 +27,7 @@ function addBookToLibrary() {
   read.value = '0';
 
   myLibrary.push(book);
+  localStorage.setItem('myLibrary', myLibrary.join(', '))
   closeForm();
   displayBooks();
 }
@@ -35,7 +40,7 @@ function removeBookFromLibrary(index) {
 }
 
 function toggleBookStatus(index) {
-  myLibrary[index].status = !myLibrary[index].status;
+  myLibrary[index].toggle();
   displayBooks();
 }
 
