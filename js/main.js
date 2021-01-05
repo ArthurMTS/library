@@ -27,24 +27,28 @@ function addBookToLibrary() {
   displayBooks();
 }
 
-function removeBookFromLibrary() {
+function removeBookFromLibrary(index) {
+  if (!confirm('Are you sure?')) return;
 
+  myLibrary.splice(index, 1);
+  displayBooks();
 }
 
-function toggleBookStatus() {
-  
+function toggleBookStatus(index) {
+  myLibrary[index].status = !myLibrary[index].status;
+  displayBooks();
 }
 
 function displayBooks() {
   const main = document.querySelector('#main');
   main.innerHTML = '';
 
-  myLibrary.forEach(book => {
-    main.innerHTML += bookCard(book);
+  myLibrary.forEach((book, index) => {
+    main.innerHTML += bookCard(book, index);
   });
 }
 
-function bookCard(book) {
+function bookCard(book, index) {
   const statusClass = book.status ? 'read' : 'not-read';
   const status = book.status ? 'Read' : 'Not Read';
   const toggle = book.status ? './assets/toggle-right.svg' : './assets/toggle-left.svg';
@@ -52,9 +56,9 @@ function bookCard(book) {
   return `
     <article class="book ${statusClass}">
       <header class="book-header">
-        <img class="toggle" src="${toggle}" alt="toggle">
+        <img class="toggle" onclick="toggleBookStatus(${index})" src="${toggle}" alt="toggle">
         <span class="status">${status}</span>
-        <img class="delete" src="./assets/trash-2.svg" alt="delete">
+        <img class="delete" onclick="removeBookFromLibrary(${index})" src="./assets/trash-2.svg" alt="delete">
       </header>
       <main class="book-main">
         <h2>${book.title}</h2>
@@ -72,8 +76,6 @@ function closeForm() {
   form.style.display = 'none';
 }
 
-displayBooks();
-
 const addButton = document.querySelector('#add-button');
 addButton.addEventListener('click', () => {
   const form = document.querySelector('#form');
@@ -83,8 +85,10 @@ addButton.addEventListener('click', () => {
 const closeButton = document.querySelector('.close');
 closeButton.addEventListener('click', closeForm);
 
-const submitButton = document.querySelector('#submit-button');
-submitButton.addEventListener('click', (e) => {
+const form = document.querySelector('#form');
+form.addEventListener('submit', (e) => {
   e.preventDefault();
   addBookToLibrary();
 });
+
+displayBooks();
